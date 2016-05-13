@@ -8,9 +8,9 @@
   <script>
     $(document).ready(function(){
       $("#OK_btn").click(function(){
-        $("#calandar").load('calandar.php');
+        $("#calandar").load('./calandar.php');
       });
-      $("#calandar").load('calandar.php');
+      $("#calandar").load('./calandar.php');
     });
   </script>
   <style>
