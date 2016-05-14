@@ -32,14 +32,28 @@
 </head>
 
 <body>
-  <div class="row">
-    <div class="col-xs-9 col-sm-3">
-        <h5>Month:</h5>
-        <input id="MonthSel" type="text">
-        <button id="OK_btn" type="button" class="btn btn-default">OK</button>
-    </div>
-    <div class="col-xs-10 col-sm-9">
-      <div id="calandar"></div>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+      <li><a data-toggle="tab" href="#cal">Calendar</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
+        <h3>HOME</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div id="cal" class="tab-pane fade">
+        <div class="row">
+          <div class="col-xs-9 col-sm-3">
+              <h5>Month:</h5>
+              <input id="MonthSel" type="text">
+              <button id="OK_btn" type="button" class="btn btn-default">OK</button>
+          </div>
+          <div class="col-xs-10 col-sm-9">
+            <div id="calandar"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
