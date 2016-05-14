@@ -8,7 +8,12 @@
   <script>
     $(document).ready(function(){
       $("#OK_btn").click(function(){
-        $("#calandar").load('./calandar.php');
+        var month = parseInt(document.getElementById('MonthSel').value, 10);
+        if (month < 1 || month > 12 || typeof month !== 'number') {
+          alert('Month out of range: ' + typeof month);
+        } else {
+          $("#calandar").load('./calandar.php?month=' + month);
+        }
       });
       $("#calandar").load('./calandar.php');
     });
@@ -29,6 +34,8 @@
 <body>
   <div class="row">
     <div class="col-xs-3 col-md-2">
+        <h5>Month:</h5>
+        <input id="MonthSel" type="text">
         <button id="OK_btn" type="button" class="btn btn-default">OK</button>
     </div>
     <div class="col-ws-6 col-md-10">

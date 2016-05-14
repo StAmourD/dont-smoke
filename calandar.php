@@ -65,7 +65,19 @@ function draw_calendar($month,$year){
 }
 
 /* sample usages */
-echo '<h2></h2>';
-echo draw_calendar(5,2016);
+//echo '<h2></h2>';
+//echo draw_calendar(6,2016);
+$mon = date('n');
+$year = date('Y');
 
+if (isset($_GET['month'])) {
+    $mon = $_GET['month'];
+}
+
+if (isset($_GET['year'])) {
+    $year = $_GET['year'];
+}
+
+echo date('F',mktime(0,0,0,$mon,1,$year)) . ' ' . date('Y',mktime(0,0,0,$mon,1,$year));
+echo draw_calendar($mon, $year);
 ?>
