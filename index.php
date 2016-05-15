@@ -9,8 +9,8 @@
     $(document).ready(function(){
       $("#OK_btn").click(function(){
         var month = parseInt(document.getElementById('MonthSel').value, 10);
-        if (month < 1 || month > 12 || typeof month !== 'number') {
-          alert('Month out of range: ' + typeof month);
+        if (month < 1 || month > 12 || isNaN(month)) {
+          alert('Month out of range: ' + month);
         } else {
           $("#calandar").load('./calandar.php?month=' + month);
         }
