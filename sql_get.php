@@ -1,9 +1,17 @@
 <?php
 function open_connection() {
-  $YOUR_DATABASE_NAME = "php";
-  $host="localhost:3306";
-  $user="root";
-  $password="#r00tpass2";
+  if(defined('OPENSHIFT_APP_NAME')){
+    $YOUR_DATABASE_NAME = OPENSHIFT_APP_NAME;
+    $host = OPENSHIFT_MYSQL_DB_HOST . ":" . OPENSHIFT_MYSQL_DB_PORT;
+    $user = OPENSHIFT_MYSQL_DB_USERNAME;
+    $password = OPENSHIFT_MYSQL_DB_PASSWORD;
+  } else {
+    $YOUR_DATABASE_NAME = "php";
+    $host = "localhost:3306";
+    $user = "root";
+    $password = "#r00tpass2";
+  }
+
   $con = new mysqli($host, $user, $password, $YOUR_DATABASE_NAME);
   if($con->connect_error) {
     die("Could not connect: " . mysqli_error($con));
