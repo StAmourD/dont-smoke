@@ -2,7 +2,7 @@
 function open_connection() {
   if(defined('OPENSHIFT_APP_NAME')){
     $YOUR_DATABASE_NAME = getenv('OPENSHIFT_APP_NAME');
-    $host = getenv('OPENSHIFT_MYSQL_DB_HOST');
+    $host = getenv('OPENSHIFT_MYSQL_DB_HOST') . ":" . getenv('OPENSHIFT_MYSQL_DB_PORT');
     $user = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
     $password = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
   } else {
