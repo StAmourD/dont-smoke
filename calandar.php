@@ -1,4 +1,5 @@
 <?PHP
+include 'sql_get.php';
 /* draws a calendar */
 /* https://davidwalsh.name/php-calendar */
 function draw_calendar($month,$year){
@@ -16,7 +17,7 @@ function draw_calendar($month,$year){
 	$days_in_this_week = 1;
 	$day_counter = 0;
 	$dates_array = array();
-
+	$con = open_connection();
 	/* row for week one */
 	$calendar.= '<tr class="calendar-row">';
 
@@ -31,9 +32,7 @@ function draw_calendar($month,$year){
 		$calendar.= '<td class="calendar-day">';
 			/* add in the day number */
 			$calendar.= '<div class="day-number">'.$list_day.'</div>';
-
-			/** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! **/
-			$calendar.= str_repeat('<p> </p>',2);
+			$calendar.= '<p> ' . get_data_single_date($con, $year . '-' . $month . '-' . $list_day) . '</p>';
 
 		$calendar.= '</td>';
 		if($running_day == 6):
@@ -46,7 +45,7 @@ function draw_calendar($month,$year){
 		endif;
 		$days_in_this_week++; $running_day++; $day_counter++;
 	endfor;
-
+	$con->close();
 	/* finish the rest of the days in the week */
 	if($days_in_this_week < 8):
 		for($x = 1; $x <= (8 - $days_in_this_week); $x++):
