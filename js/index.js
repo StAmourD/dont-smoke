@@ -27,12 +27,18 @@ $(document).ready(function(){
       document.getElementById('MonthSel').value = month;
       $("#calandar").load('./calandar.php?month=' + month);
   });
-  $(".calendar-day").click(function(){
-    alert("Button id is: " . this.id);
-  });
 //   main
   var d = new Date();
   var month = d.getMonth() + 1;
   document.getElementById('MonthSel').value = month;
+  // LoadCal(month);
   $("#calandar").load('./calandar.php?month=' + month);
+  // jQuerry bind after div change
+  $("#calandar").on('click', '.calendar-day', function (){
+    DayClicked();
+  });
 });
+
+function DayClicked() {
+  alert($(this).prop('id') + ' more text');
+}
