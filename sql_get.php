@@ -18,15 +18,12 @@ function open_connection() {
   if($con->connect_error) {
     die("Could not connect: " . mysqli_error($con));
   } else {
-    // get_data_single_date($con,"");
-    // $con->close();
     return $con;
   }
 }
 
 function get_data_single_date($con,$date) {
   $Count = "";
-  //SELECT * FROM php.dontsmoke WHERE Date = '2016-05-15';
   $MySQL = "SELECT * FROM dontsmoke WHERE Date = '" . $date . "'";
   $query = $con->query($MySQL);
   if ($query->num_rows > 0) {

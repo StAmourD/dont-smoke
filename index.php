@@ -41,7 +41,7 @@
     <div class="tab-content">
       <div id="home" class="tab-pane fade in active">
         <h3>HOME</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>This is a test.</p>
       </div>
       <div id="cal" class="tab-pane fade">
         <div class="row">
