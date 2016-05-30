@@ -1,13 +1,13 @@
 <?php
 function open_connection() {
-  if(defined('OPENSHIFT_APP_NAME')){
-    echo 'yes app name';
+  if(strlen(getenv('OPENSHIFT_APP_NAME')) > 0){
+    echo ' yes app name';
     $YOUR_DATABASE_NAME = getenv('OPENSHIFT_APP_NAME');
     $host = getenv('OPENSHIFT_MYSQL_DB_HOST') . ":" . getenv('OPENSHIFT_MYSQL_DB_PORT');
     $user = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
     $password = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
   } else {
-    echo 'no app name';
+    echo ' no app name';
     $YOUR_DATABASE_NAME = "php";
     $host = "localhost:3306";
     $user = "root";
