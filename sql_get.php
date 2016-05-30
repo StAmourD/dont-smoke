@@ -6,6 +6,7 @@ function open_connection() {
     $host = getenv('OPENSHIFT_MYSQL_DB_HOST') . ":" . getenv('OPENSHIFT_MYSQL_DB_PORT');
     $user = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
     $password = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+    echo ' ' . $host;
   } else {
     echo ' no app name';
     $YOUR_DATABASE_NAME = "php";
