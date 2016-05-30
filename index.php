@@ -5,20 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="./jquery.min.js"></script>
   <script src="./bootstrap.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      $("#OK_btn").click(function(){
-        var month = parseInt(document.getElementById('MonthSel').value, 10);
-        if (month < 1 || month > 12 || isNaN(month)) {
-          alert('Month out of range: ' + month);
-
-        } else {
-          $("#calandar").load('./calandar.php?month=' + month);
-        }
-      });
-      $("#calandar").load('./calandar.php');
-    });
-  </script>
+  <script src="./js/index.js"></script>
   <style>
     table.calendar		{ border-left:1px solid #999; }
     tr.calendar-row	{  }
@@ -35,20 +22,22 @@
 <body>
   <div class="container">
     <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-      <li><a data-toggle="tab" href="#cal">Calendar</a></li>
+      <li ><a data-toggle="tab" href="#home">Home</a></li>
+      <li class="active"><a data-toggle="tab" href="#cal">Calendar</a></li>
     </ul>
     <div class="tab-content">
-      <div id="home" class="tab-pane fade in active">
+      <div id="home" class="tab-pane fade">
         <h3>HOME</h3>
         <p>This is a test.</p>
       </div>
-      <div id="cal" class="tab-pane fade">
+      <div id="cal" class="tab-pane fade in active">
         <div class="row">
           <div class="col-xs-9 col-sm-3">
               <h5>Month:</h5>
               <input id="MonthSel" type="text">
               <button id="OK_btn" type="button" class="btn btn-default">OK</button>
+              <button id="Prev_btn" type="button" class="btn btn-default">Prev</button>
+              <button id="Next_btn" type="button" class="btn btn-default">Next</button>
           </div>
           <div class="col-xs-10 col-sm-9">
             <div id="calandar"></div>
