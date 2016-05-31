@@ -31,7 +31,6 @@ $(document).ready(function(){
   var d = new Date();
   var month = d.getMonth() + 1;
   document.getElementById('MonthSel').value = month;
-  // LoadCal(month);
   $("#calandar").load('./calandar.php?month=' + month);
   // jQuerry bind after div change
   $("#calandar").on('click', '.calendar-day', function (){

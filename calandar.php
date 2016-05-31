@@ -64,8 +64,6 @@ function draw_calendar($month,$year){
 }
 
 /* sample usages */
-//echo '<h2></h2>';
-//echo draw_calendar(6,2016);
 $mon = date('n');
 $year = date('Y');
 
