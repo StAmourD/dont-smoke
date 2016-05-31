@@ -35,10 +35,11 @@ $(document).ready(function(){
   $("#calandar").load('./calandar.php?month=' + month);
   // jQuerry bind after div change
   $("#calandar").on('click', '.calendar-day', function (){
-    DayClicked();
+    ClickedDay = $(this).prop('id');
+    DayClicked(ClickedDay);
   });
 });
 
-function DayClicked() {
-  alert($(this).prop('id') + ' more text');
+function DayClicked(ClickedDayID) {
+  alert(ClickedDayID);
 }
