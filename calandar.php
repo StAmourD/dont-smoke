@@ -29,7 +29,7 @@ function draw_calendar($month,$year){
 
 	/* keep going with days.... */
 	for($list_day = 1; $list_day <= $days_in_month; $list_day++):
-		$calendar.= '<td id="' . $year . '-' . $month . '-' . $list_day . '" class="calendar-day">';
+		$calendar.= '<td id="' . $year . '-' . $month . '-' . $list_day . '" class="calendar-day" data-toggle="modal" data-target="#myModal">';
 			/* add in the day number */
 			$calendar.= '<div class="day-number">'.$list_day.'</div>';
 			$calendar.= '<p> ' . get_data_single_date($con, $year . '-' . $month . '-' . $list_day) . '</p>';

@@ -46,5 +46,27 @@
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <div data-toggle="modal" data-target="#myModal"></div>
+    <div class="modal fade" id="myModal" role="dialog"><!-- Modal -->
+      <div class="modal-dialog">
+        <div class="modal-content"><!-- Modal content-->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <div id="ModalText"></div>
+            <button type="button" class="btn btn-primary">Stuff</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- Modal content-->
+      </div>
+    </div><!-- Modal -->
+  </div>
+
 </body>
 </html>

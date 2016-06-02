@@ -40,5 +40,6 @@ $(document).ready(function(){
 });
 
 function DayClicked(ClickedDayID) {
-  alert(ClickedDayID);
+  // alert(ClickedDayID);
+  $("#ModalText").html("Clicked day: " + ClickedDayID)
 }
