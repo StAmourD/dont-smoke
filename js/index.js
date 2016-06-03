@@ -4,18 +4,18 @@ $(document).ready(function(){
     if (month < 1 || month > 12 || isNaN(month)) {
       alert('Month out of range: ' + month);
     } else {
-      $("#calandar").load('./calandar.php?month=' + month);
+      $("#calendar").load('./calendar.php?month=' + month);
     }
   });
   $("#Next_btn").click(function(){
     var month = parseInt(document.getElementById('MonthSel').value, 10);
     if (month >= 1 && month < 12) {
       month += 1;
-     } else if (month == 12) {
-       month = 1;
-     }
-      document.getElementById('MonthSel').value = month;
-      $("#calandar").load('./calandar.php?month=' + month);
+    } else if (month == 12) {
+      month = 1;
+    }
+    document.getElementById('MonthSel').value = month;
+    $("#calendar").load('./calendar.php?month=' + month);
   });
   $("#Prev_btn").click(function(){
     var month = parseInt(document.getElementById('MonthSel').value, 10);
@@ -24,22 +24,34 @@ $(document).ready(function(){
     } else if (month == 1) {
       month = 12;
     }
-      document.getElementById('MonthSel').value = month;
-      $("#calandar").load('./calandar.php?month=' + month);
+    document.getElementById('MonthSel').value = month;
+    $("#calendar").load('./calendar.php?month=' + month);
   });
+  $("#mod-add-one").click(function(){
+    var ClickedDay = document.getElementById('mod-date').innerHTML;
+    // load php that will update DB
+    $.ajax({
+      url: "./update.php?date=" + ClickedDay
+    }).done(function(data) {
+      console.log(data);
+    });
+    // refresh calendar
+    var Tmonth = document.getElementById('MonthSel').value;
+    $("#calendar").load('./calendar.php?month=' + Tmonth);
+  });
+
 //   main
   var d = new Date();
   var month = d.getMonth() + 1;
   document.getElementById('MonthSel').value = month;
-  $("#calandar").load('./calandar.php?month=' + month);
+  $("#calendar").load('./calendar.php?month=' + month);
   // jQuerry bind after div change
-  $("#calandar").on('click', '.calendar-day', function (){
+  $("#calendar").on('click', '.calendar-day', function (){
     ClickedDay = $(this).prop('id');
     DayClicked(ClickedDay);
   });
 });
 
 function DayClicked(ClickedDayID) {
-  // alert(ClickedDayID);
-  $("#ModalText").html("Clicked day: " + ClickedDayID)
+  $("#ModalText").html("What would you like to do with the count on <div id='mod-date'>" + ClickedDayID + "</div>?");
 }

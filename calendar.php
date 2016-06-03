@@ -1,5 +1,5 @@
 <?PHP
-include 'sql_get.php';
+include 'sql.php';
 /* draws a calendar */
 /* https://davidwalsh.name/php-calendar */
 function draw_calendar($month,$year){

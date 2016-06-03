@@ -31,7 +31,7 @@
               <button id="Next_btn" type="button" class="btn btn-default">Next</button>
           </div>
           <div class="col-xs-10 col-sm-9">
-            <div id="calandar"></div>
+            <div id="calendar"></div>
           </div>
         </div>
       </div>
@@ -45,11 +45,12 @@
         <div class="modal-content"><!-- Modal content-->
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
+            <h4 class="modal-title">Change Number</h4>
           </div>
           <div class="modal-body">
             <div id="ModalText"></div>
-            <button type="button" class="btn btn-primary">Stuff</button>
+            <button id="mod-add-one" type="button" class="btn btn-primary" data-dismiss="modal">Add One</button>
+            <button id="mod-clear" type="button" class="btn btn-primary">Clear</button>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

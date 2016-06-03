@@ -32,4 +32,19 @@ function get_data_single_date($con,$date) {
   }
   return $Count;
 }
+
+function set_add_one_single_date($con,$date) {
+  $Count = get_data_single_date($con,$date);
+  if ($Count == "") {
+    // insert instead
+    // $MySQL = "INSERT INTO dontsmoke (User, Date, Count) SET (1,'" . $date . "'," . $Count . ")";
+    $MySQL = "INSERT INTO `dontsmoke`(`User`, `Date`, `Count`) VALUES (1,'" . $date . "', 1);";
+    $con->query($MySQL);
+  } else {
+    $Count += 1;
+    $MySQL = "UPDATE dontsmoke SET Count = " . $Count . " WHERE Date = '" . $date . "'";
+    $con->query($MySQL);
+    return $Count;
+  }
+}
 ?>
