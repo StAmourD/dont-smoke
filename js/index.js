@@ -28,7 +28,7 @@ $(document).ready(function(){
     $("#calendar").load('./calendar.php?month=' + month);
   });
   $("#mod-add-one").click(function(){
-    var ClickedDay = document.getElementById('mod-date').innerHTML;
+    var ClickedDay = $("#ModalText").data("current-date");
     // load php that will update DB
     $.ajax({
       url: "./update.php?date=" + ClickedDay
@@ -53,5 +53,6 @@ $(document).ready(function(){
 });
 
 function DayClicked(ClickedDayID) {
-  $("#ModalText").html("What would you like to do with the count on <div id='mod-date'>" + ClickedDayID + "</div>?");
+  $("#ModalText").html("What would you like to do with the count on " + ClickedDayID + "?");
+  $("#ModalText").data("current-date", ClickedDayID);
 }
