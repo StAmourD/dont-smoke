@@ -34,10 +34,10 @@ $(document).ready(function(){
       url: "./update.php?date=" + ClickedDay
     }).done(function(data) {
       console.log(data);
+      // refresh calendar
+      var Tmonth = document.getElementById('MonthSel').value;
+      $("#calendar").load('./calendar.php?month=' + Tmonth);
     });
-    // refresh calendar
-    var Tmonth = document.getElementById('MonthSel').value;
-    $("#calendar").load('./calendar.php?month=' + Tmonth);
   });
 
 //   main

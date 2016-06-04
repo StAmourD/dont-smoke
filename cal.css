@@ -1,5 +1,6 @@
 table.calendar {
     border-left: 1px solid #999;
+    margin: 0 auto;
 }
 tr.calendar-row {}
 td.calendar-day {
@@ -23,7 +24,7 @@ td.calendar-day-head {
     background: #999;
     font-weight: bold;
     text-align: center;
-    width: 80px;
+    width: 7%;
     padding: 5px;
     border-bottom: 1px solid #999;
     border-top: 1px solid #999;

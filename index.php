@@ -23,24 +23,23 @@
       </div>
       <div id="cal" class="tab-pane fade in active">
         <div class="row">
-          <div class="col-xs-12 col-md-9">
-            <div class="col-xs-12 col-md-12">
-              <div id="calendar"></div>
-            </div>
+          <div class="col-xs-12 col-md-9 text-center">
+            <span id="calendar" class=""></span>
           </div>
           <div class="col-xs-12 col-md-3">
             <div class="input-group">
-              <!-- <label for="inputSuccess2">Month:</label> -->
               <input type="text" class="form-control" id="MonthSel">
               <span class="input-group-btn">
                 <button id="OK_btn" type="button" class="btn btn-default">OK</button>
               </span>
             </div>
-            <div class="text-center">
-              <div class="btn-group">
-                <button id="Prev_btn" type="button" class="btn btn-default">« Prev</button>
-                <button id="Next_btn" type="button" class="btn btn-default">Next »</button>
-              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-9 text-center">
+            <div class="btn-group">
+              <button id="Prev_btn" type="button" class="btn btn-default">« Prev</button>
+              <button id="Next_btn" type="button" class="btn btn-default">Next »</button>
             </div>
           </div>
         </div>
