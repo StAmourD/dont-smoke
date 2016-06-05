@@ -65,24 +65,27 @@
           <div class="modal-body">
             <div id="ModalText"></div>
             <button id="mod-add-one" type="button" class="btn btn-primary" data-dismiss="modal">Add One</button>
-            <button id="mod-clear" type="button" class="btn btn-primary">Clear</button>
+
             <!-- http://codepen.io/Thomas-Lebeau/pen/csHqx -->
             <div class="input-group spinner">
               <input id="mod-start-value" type="text" class="form-control">
               <div class="input-group-btn-vertical">
-                <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
-                <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-menu-up"></span></button>
+                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-menu-down"></span></button>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button id="mod-ok" type="button" class="btn btn-primary">OK</button>
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
             </div>
           </div>
-          <!-- Modal content-->
+
         </div>
+        <!-- Modal content-->
       </div>
     </div>
-    <!-- Modal -->
+  </div>
+  <!-- Modal -->
 
 </body>
 

@@ -44,6 +44,23 @@ $(document).ready(function(){
       $("#calendar").load('./calendar.php?month=' + Tmonth);
     });
   });
+
+  $("#mod-ok").click(function(){
+    $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
+    var ClickedDay = $("#ModalText").data("current-date");
+    var NewCount = $("#mod-start-value").val();
+    // var ClickedDayValue = $("#ModalText").data("current-value");
+    // load php that will update DB
+    $.ajax({
+      url: "./update.php?date=" + ClickedDay + "&newcount=" + NewCount
+    }).done(function(data) {
+      // refresh calendar
+      var Tmonth = document.getElementById('MonthSel').value;
+      $("#calendar").load('./calendar.php?month=' + Tmonth);
+      $('#myModal').modal('hide');
+    });
+  });
+
   // http://codepen.io/Thomas-Lebeau/pen/csHqx
   (function ($) {
     $('.spinner .btn:first-of-type').on('click', function() {
@@ -72,7 +89,6 @@ function DayClicked(ClickedDayID, CurrentValue) {
   }
   $("#ModalText").html("What would you like to do with the count on " + ClickedDayID + "?");
   $("#ModalText").data("current-date", ClickedDayID);
-  // $("#ModalText").data("current-value", CurrentValue);
   $("#mod-start-value").val(CurrentValue);
   $('#myModal').modal('show');
 }
