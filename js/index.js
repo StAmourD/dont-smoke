@@ -34,6 +34,7 @@ $(document).ready(function(){
   $("#mod-add-one").click(function(){
     $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
     var ClickedDay = $("#ModalText").data("current-date");
+    // var ClickedDayValue = $("#ModalText").data("current-value");
     // load php that will update DB
     $.ajax({
       url: "./update.php?date=" + ClickedDay
@@ -43,6 +44,15 @@ $(document).ready(function(){
       $("#calendar").load('./calendar.php?month=' + Tmonth);
     });
   });
+  // http://codepen.io/Thomas-Lebeau/pen/csHqx
+  (function ($) {
+    $('.spinner .btn:first-of-type').on('click', function() {
+      $('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);
+    });
+    $('.spinner .btn:last-of-type').on('click', function() {
+      $('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);
+    });
+  })(jQuery);
 //  Main
   var d = new Date();
   var month = d.getMonth() + 1;
@@ -51,11 +61,17 @@ $(document).ready(function(){
   $("#calendar").load('./calendar.php?month=' + month);
   // jQuerry bind after div change
   $("#calendar").on('click', '.calendar-day', function (){
-    DayClicked($(this).prop('id'));
+    DayClicked($(this).prop('id'), $(this).data('value'));
   });
+
 });
 
-function DayClicked(ClickedDayID) {
+function DayClicked(ClickedDayID, CurrentValue) {
+  if (CurrentValue == '') {
+    CurrentValue = 0;
+  }
   $("#ModalText").html("What would you like to do with the count on " + ClickedDayID + "?");
   $("#ModalText").data("current-date", ClickedDayID);
+  // $("#ModalText").data("current-value", CurrentValue);
+  $("#mod-start-value").val(CurrentValue);
 }
