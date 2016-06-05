@@ -74,4 +74,5 @@ function DayClicked(ClickedDayID, CurrentValue) {
   $("#ModalText").data("current-date", ClickedDayID);
   // $("#ModalText").data("current-value", CurrentValue);
   $("#mod-start-value").val(CurrentValue);
+  $('#myModal').modal('show');
 }
