@@ -1,2 +1,6 @@
 # dont-smoke
-Learning PHP and JS.
+### **Learning**
+  - PHP
+  - JS
+  - jquery
+  - bootstrap
