@@ -1,13 +1,16 @@
 $(document).ready(function(){
   $("#OK_btn").click(function(){
+    $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
     var month = parseInt(document.getElementById('MonthSel').value, 10);
     if (month < 1 || month > 12 || isNaN(month)) {
       alert('Month out of range: ' + month);
+      $('#calendar').html('');
     } else {
       $("#calendar").load('./calendar.php?month=' + month);
     }
   });
   $("#Next_btn").click(function(){
+    $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
     var month = parseInt(document.getElementById('MonthSel').value, 10);
     if (month >= 1 && month < 12) {
       month += 1;
@@ -18,6 +21,7 @@ $(document).ready(function(){
     $("#calendar").load('./calendar.php?month=' + month);
   });
   $("#Prev_btn").click(function(){
+    $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
     var month = parseInt(document.getElementById('MonthSel').value, 10);
     if (month > 1 && month <= 12) {
       month -= 1;
@@ -28,27 +32,26 @@ $(document).ready(function(){
     $("#calendar").load('./calendar.php?month=' + month);
   });
   $("#mod-add-one").click(function(){
+    $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
     var ClickedDay = $("#ModalText").data("current-date");
     // load php that will update DB
     $.ajax({
       url: "./update.php?date=" + ClickedDay
     }).done(function(data) {
-      console.log(data);
       // refresh calendar
       var Tmonth = document.getElementById('MonthSel').value;
       $("#calendar").load('./calendar.php?month=' + Tmonth);
     });
   });
-
-//   main
+//  Main
   var d = new Date();
   var month = d.getMonth() + 1;
   document.getElementById('MonthSel').value = month;
+  $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
   $("#calendar").load('./calendar.php?month=' + month);
   // jQuerry bind after div change
   $("#calendar").on('click', '.calendar-day', function (){
-    ClickedDay = $(this).prop('id');
-    DayClicked(ClickedDay);
+    DayClicked($(this).prop('id'));
   });
 });
 

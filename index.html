@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="./jquery.min.js"></script>
-  <script src="./bootstrap.min.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
   <script src="./js/index.js"></script>
-  <link rel="stylesheet" href="./cal.css">
-  <link rel="stylesheet" href="./bootstrap.min.css">
+  <link rel="stylesheet" href="./css/cal.css">
+  <link rel="stylesheet" href="./css/spinner.css">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
 
 <body>
@@ -28,10 +29,14 @@
           </div>
           <div class="col-xs-12 col-md-3">
             <div class="input-group">
+              <!-- Change to a drop down showing long month names, returning number -->
               <input type="text" class="form-control" id="MonthSel">
               <span class="input-group-btn">
                 <button id="OK_btn" type="button" class="btn btn-default">OK</button>
               </span>
+            </div>
+            <div id="test-div">
+
             </div>
           </div>
         </div>
@@ -47,9 +52,10 @@
     </div>
   </div>
 
-  <div class="container">
-    <div data-toggle="modal" data-target="#myModal"></div>
-    <div class="modal fade" id="myModal" role="dialog"><!-- Modal -->
+  <div class="container"><!-- Modal -->
+    <div data-toggle="modal" data-target="#myModal">
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content"><!-- Modal content-->
           <div class="modal-header">
@@ -66,8 +72,8 @@
           </div>
         </div><!-- Modal content-->
       </div>
-    </div><!-- Modal -->
-  </div>
+    </div>
+  </div><!-- Modal -->
 
 </body>
 </html>
