@@ -34,18 +34,24 @@ function get_data_single_date($con,$date) {
 }
 
 function set_add_one_single_date($con,$date, $newcount) {
+  $new_rec = 0;
+  $Count = get_data_single_date($con,$date);
+  if ($Count == "") {
+    $new_rec = 1;
+    $Count = 0;
+  }
   if ($newcount == Null) {
-    $Count = get_data_single_date($con,$date) + 1;
+    $Count += 1;
   }else {
     $Count = $newcount;
   }
 
-  if ($Count == "") {
+  if ($new_rec == 1) {
     // insert instead
-    // $MySQL = "INSERT INTO dontsmoke (User, Date, Count) SET (1,'" . $date . "'," . $Count . ")";
-    $MySQL = "INSERT INTO `dontsmoke`(`User`, `Date`, `Count`) VALUES (1,'" . $date . "', 1);";
+    $MySQL = "INSERT INTO `dontsmoke`(`User`, `Date`, `Count`) VALUES (1,'" . $date . "', $Count);";
     $con->query($MySQL);
   } else {
+    // if count is zero DELETE
     $MySQL = "UPDATE dontsmoke SET Count = " . $Count . " WHERE Date = '" . $date . "'";
     $con->query($MySQL);
     return $Count;
