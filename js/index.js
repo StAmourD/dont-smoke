@@ -45,6 +45,23 @@ $(document).ready(function(){
     });
   });
 
+  $("#mod-add-one-today").click(function(){
+    $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    var ClickedDay = yyyy.toString() + '-' + mm.toString() + '-' + dd.toString();
+    // load php that will update DB
+    $.ajax({
+      url: "./update.php?date=" + ClickedDay
+    }).done(function(data) {
+      // refresh calendar
+      var Tmonth = document.getElementById('MonthSel').value;
+      $("#calendar").load('./calendar.php?month=' + Tmonth);
+    });
+  });
+
   $("#mod-ok").click(function(){
     $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
     var ClickedDay = $("#ModalText").data("current-date");
