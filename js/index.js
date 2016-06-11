@@ -87,6 +87,14 @@ $(document).ready(function(){
       $('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);
     });
   })(jQuery);
+
+  $(".MonthItem").click(function() {
+    // $("#MonthSel").value = $(this).prop('id');
+    document.getElementById('MonthSel').value = $(this).prop('id').substring(4,6);
+    $("#mod-ok").trigger("click");
+    $("#month-drop").text($(this).text());
+  });
+
 //  Main
   var d = new Date();
   var month = d.getMonth() + 1;
