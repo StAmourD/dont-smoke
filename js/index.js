@@ -1,31 +1,35 @@
 $(document).ready(function(){
   $("#OK_btn").click(function(){
-    $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
-    var month = parseInt($("#MonthSel").val(), 10);
-    if (month < 1 || month > 12 || isNaN(month)) {
-      alert('Month out of range: ' + month);
-      $('#calendar').html('');
-    } else {
-      $("#calendar").load('./calendar.php?month=' + month);
-    }
+    UpdateCal();
   });
+
   $("#Next_btn").click(function(){
     $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
-    var month = parseInt($("#MonthSel").val(), 10);
+    var month = parseInt($("#month-drop").data('selection'), 10);
+    var year = parseInt($("#year-drop").data('selection'), 10);
     if (month >= 1 && month < 12) {
       month += 1;
     } else if (month == 12) {
       month = 1;
+      year += 1;
+      DontUpdate = true;
+      $("#Year-" + year).trigger('click');
+      DontUpdate = false;
     }
     $("#Mon-" + month).trigger('click');
   });
   $("#Prev_btn").click(function(){
     $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
-    var month = parseInt($("#MonthSel").val(), 10);
+    var month = parseInt($("#month-drop").data('selection'), 10);
+    var year = parseInt($("#year-drop").data('selection'), 10);
     if (month > 1 && month <= 12) {
       month -= 1;
     } else if (month == 1) {
       month = 12;
+      year -= 1;
+      DontUpdate = true;
+      $("#Year-" + year).trigger('click');
+      DontUpdate = false;
     }
     $("#Mon-" + month).trigger('click');
   });
@@ -36,12 +40,9 @@ $(document).ready(function(){
     $.ajax({
       url: "./update.php?date=" + ClickedDay
     }).done(function(data) {
-      // refresh calendar
-      var Tmonth = $("#MonthSel").val();
-      $("#calendar").load('./calendar.php?month=' + Tmonth);
+      UpdateCal();
     });
   });
-
   $("#mod-add-one-today").click(function(){
     $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
     var today = new Date();
@@ -53,24 +54,18 @@ $(document).ready(function(){
     $.ajax({
       url: "./update.php?date=" + ClickedDay
     }).done(function(data) {
-      // refresh calendar
-      var Tmonth = $("#MonthSel").val();
-      $("#calendar").load('./calendar.php?month=' + Tmonth);
+      UpdateCal();
     });
   });
-
   $("#mod-ok").click(function(){
     $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
     var ClickedDay = $("#ModalText").data("current-date");
     var NewCount = $("#mod-start-value").val();
-    // var ClickedDayValue = $("#ModalText").data("current-value");
     // load php that will update DB
     $.ajax({
       url: "./update.php?date=" + ClickedDay + "&newcount=" + NewCount
     }).done(function(data) {
-      // refresh calendar
-      var Tmonth = $("#MonthSel").val();
-      $("#calendar").load('./calendar.php?month=' + Tmonth);
+      UpdateCal();
       $('#myModal').modal('hide');
     });
   });
@@ -86,22 +81,35 @@ $(document).ready(function(){
   })(jQuery);
 
   $(".MonthItem").click(function() {
-    $("#MonthSel").val($(this).prop('id').substring(4,6));
-    $("#mod-ok").trigger("click");
+    $("#month-drop").data('selection', $(this).prop('id').substring(4,6));
     $("#month-drop").html($(this).text() + '<span class="caret"></span>');
+    if (DontUpdate == false) {
+      UpdateCal();
+    }
+  });
+  $(".YearItem").click(function(){
+    $("#year-drop").data('selection', $(this).prop('id').substring(5,9));
+    $("#year-drop").html($(this).text() + '<span class="caret"></span>');
+    if (DontUpdate == false) {
+      UpdateCal();
+    }
   });
 
 //  Main
+  var DontUpdate = true;
   var d = new Date();
   var month = d.getMonth() + 1;
-  $("#MonthSel").val(month);
-  $('#calendar').html('<span class="glyphicon glyphicon-refresh spinning"></span> Loading...');
-  $("#calendar").load('./calendar.php?month=' + month);
+  var tYear = d.getYear() + 1900;
+  $("#year-drop").data('selection', tYear);
+  $("#Year-" + tYear).trigger('click');
+  $("#month-drop").data('selection', month);
+  $("#Mon-" + month).trigger('click');
+  UpdateCal();
+  DontUpdate = false;
   // jQuerry bind after div change
   $("#calendar").on('click', '.calendar-day', function (){
     DayClicked($(this).prop('id'), $(this).data('value'));
   });
-
 });
 
 function DayClicked(ClickedDayID, CurrentValue) {
@@ -112,4 +120,16 @@ function DayClicked(ClickedDayID, CurrentValue) {
   $("#ModalText").data("current-date", ClickedDayID);
   $("#mod-start-value").val(CurrentValue);
   $('#myModal').modal('show');
+}
+
+function UpdateCal(){
+  $('#calendar').html('<div class="text-center"><span class="glyphicon glyphicon-refresh spinning"></span> Loading...</div>');
+  var month = parseInt($("#month-drop").data('selection'), 10);
+  var year = parseInt($("#year-drop").data('selection'), 10);
+  if (month < 1 || month > 12 || isNaN(month)) {
+    alert('Month out of range: ' + month);
+    $('#calendar').html('');
+  } else {
+    $("#calendar").load('./calendar.php?month=' + month + '&year=' + year);
+  }
 }

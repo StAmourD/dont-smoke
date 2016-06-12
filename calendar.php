@@ -76,6 +76,6 @@ if (isset($_GET['year'])) {
     $year = $_GET['year'];
 }
 
-echo date('F',mktime(0,0,0,$mon,1,$year)) . ' ' . date('Y',mktime(0,0,0,$mon,1,$year));
+// echo date('F',mktime(0,0,0,$mon,1,$year)) . ' ' . date('Y',mktime(0,0,0,$mon,1,$year));
 echo draw_calendar($mon, $year);
 ?>
