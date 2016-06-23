@@ -16,13 +16,15 @@
   <div class="container">
     <ul class="nav nav-tabs">
       <li><a data-toggle="tab" href="#home">Home</a></li>
-      <li class="active"><a data-toggle="tab" href="#cal">Calendar</a></li>
+      <li class="active"><a data-toggle="tab" href="#tab2">Calendar</a></li>
     </ul>
     <div class="tab-content">
-      <div id="home" class="tab-pane fade">
+      <div id="home" class="tab-pane fade in">
         <h3>HOME</h3>
         <p>This is a test.</p>
       </div>
+
+    <div id="tab2" class="tab-pane fade in active">
       <div class="row">
         <div class="col-xs-12 col-md-12">
           <div class="text-center">
@@ -64,25 +66,25 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div id="cal" class="tab-pane fade in active">
-        <span id="calendar" class=""></span>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-md-12 text-center">
-        <div class="btn-group">
-          <button id="Prev_btn" type="button" class="btn btn-default">« Prev</button>
-          <button id="Next_btn" type="button" class="btn btn-default">Next »</button>
+      <div class="row">
+        <div id="cal">
+          <span id="calendar" class=""></span>
         </div>
       </div>
-    </div>
-    <div class="row text-center">
-      <button id="mod-add-one-today" type="button" class="btn btn-primary" data-dismiss="modal">Add One to Today</button>
+      <div class="row">
+        <div class="col-xs-12 col-md-12 text-center">
+          <div class="btn-group">
+            <button id="Prev_btn" type="button" class="btn btn-default">« Prev</button>
+            <button id="Next_btn" type="button" class="btn btn-default">Next »</button>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <button id="mod-add-one-today" type="button" class="btn btn-primary" data-dismiss="modal">Add One to Today</button>
+      </div>
     </div>
   </div>
-
+  </div>
   <div class="container">
     <!-- Modal -->
     <div data-toggle="modal" data-target="#myModal">
@@ -98,7 +100,6 @@
           <div class="modal-body">
             <div id="ModalText"></div>
             <button id="mod-add-one" type="button" class="btn btn-primary" data-dismiss="modal">Add One</button>
-
             <!-- http://codepen.io/Thomas-Lebeau/pen/csHqx -->
             <div class="input-group spinner">
               <input id="mod-start-value" type="text" class="form-control">

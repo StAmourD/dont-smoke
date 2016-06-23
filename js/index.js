@@ -99,6 +99,7 @@ $(document).ready(function(){
   var DontUpdate = true;
   var d = new Date();
   var month = d.getMonth() + 1;
+  // change to getFullYear()
   var tYear = d.getYear() + 1900;
   $("#year-drop").data('selection', tYear);
   $("#Year-" + tYear).trigger('click');
