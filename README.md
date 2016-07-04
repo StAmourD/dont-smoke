@@ -1,4 +1,5 @@
-# dont-smoke
+# Habit-Tracker
+
 ### **Learning**
   - PHP
   - JS
